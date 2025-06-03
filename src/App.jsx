@@ -11,7 +11,9 @@ export default function App() {
     <div className="flex flex-col h-screen">
       <Navbar />
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar />
+        <div className="hidden md:block">
+          <Sidebar />
+        </div>
         <main className="flex-1 overflow-y-auto bg-[#f5f5f5]">
           <LeaderboardPage />
         </main>
