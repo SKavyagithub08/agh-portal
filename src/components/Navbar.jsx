@@ -41,7 +41,7 @@ export default function Navbar() {
             Muskan Verma
           </span>
         </div>
-        <button className="flex items-center gap-1 bg-[#ff3e3e] hover:bg-[#e11d48] text-white px-5 py-2 rounded-lg text-[15px] font-semibold shadow-none">
+        <button className="flex items-center gap-1 bg-[#ff3e3e] hover:bg-[#e11d48] text-white px-5 py-2 rounded-[3px] text-[15px] font-semibold shadow-none">
           Logout <LogOut size={16} />
         </button>
       </div>
