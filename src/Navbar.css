@@ -1,0 +1,135 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 32px;
+  box-shadow: 0 1px 2px 0 rgba(16,24,40,0.05);
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+  min-height: 60px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.navbar-hamburger {
+  background: none;
+  border: none;
+  display: block;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .navbar-hamburger {
+    display: none;
+  }
+}
+
+.navbar-hamburger-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.navbar-logo {
+  height: 40px;
+}
+
+.navbar-menu {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-weight: 500;
+    color: #222;
+    font-size: 15px;
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+.navbar-menu-item {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.navbar-menu-item:hover,
+.navbar-menu-item-dropdown:hover {
+  color: #ff3e3e;
+}
+
+.navbar-menu-item-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.navbar-profile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navbar-profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    justify-content: flex-end;
+  }
+}
+
+.navbar-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-profile-avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 9999px;
+  border: 1px solid #e5e5e5;
+  object-fit: cover;
+}
+
+.navbar-profile-name {
+  font-weight: 600;
+  color: #222;
+  font-size: 15px;
+}
+
+.navbar-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #ff3e3e;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 3px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.navbar-logout-btn:hover {
+  background: #e11d48;
+}

@@ -1,53 +1,54 @@
 import { ChevronDown, LogOut, Menu, X } from "lucide-react";
 import { useState } from "react";
+import "../Navbar.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav
-      className="flex justify-between items-center px-4 md:px-8 py-3 shadow border-b bg-white"
+      className="navbar"
       style={{ fontFamily: "Poppins, sans-serif", minHeight: 64 }}
     >
       {/* Left: Hamburger (mobile) + Logo */}
-      <div className="flex items-center gap-4 flex-1">
+      <div className="navbar-left">
         <button
-          className="md:hidden"
+          className="navbar-hamburger"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isOpen ? <X className="navbar-hamburger-icon" /> : <Menu className="navbar-hamburger-icon" />}
         </button>
-        <img src="/logo.jpg" alt="Logo" className="h-10" />
+        <img src="/logo.jpg" alt="Logo" className="navbar-logo" />
       </div>
 
       {/* Menu (hidden on mobile) */}
-      <div className="hidden md:flex items-center gap-7 font-medium text-[#222] text-[15px] flex-1 justify-center">
-        <span className="cursor-pointer hover:text-[#ff3e3e]">Home</span>
-        <span className="cursor-pointer hover:text-[#ff3e3e]">Practice</span>
-        <div className="flex items-center gap-1 cursor-pointer hover:text-[#ff3e3e]">
+      <div className="navbar-menu">
+        <span className="navbar-menu-item">Home</span>
+        <span className="navbar-menu-item">Practice</span>
+        <div className="navbar-menu-item-dropdown">
           <span>Assessment</span>
           <ChevronDown size={16} />
         </div>
-        <span className="cursor-pointer hover:text-[#ff3e3e]">Leaderboard</span>
-        <div className="flex items-center gap-1 cursor-pointer hover:text-[#ff3e3e]">
+        <span className="navbar-menu-item">Leaderboard</span>
+        <div className="navbar-menu-item-dropdown">
           <span>CompanySpecific</span>
           <ChevronDown size={16} />
         </div>
       </div>
 
       {/* Profile + Logout (hidden on mobile) */}
-      <div className="hidden md:flex items-center gap-4 flex-1 justify-end">
-        <div className="flex items-center gap-2">
+      <div className="navbar-profile">
+        <div className="navbar-profile-info">
           <img
             src="https://i.pravatar.cc/40?img=12"
             alt="Profile"
-            className="h-10 w-10 rounded-full border border-[#e5e5e5]"
+            className="navbar-profile-avatar"
           />
-          <span className="font-semibold text-[#222] text-[15px]">
+          <span className="navbar-profile-name">
             Muskan Verma
           </span>
         </div>
-        <button className="flex items-center gap-1 bg-[#ff3e3e] hover:bg-[#e11d48] text-white px-5 py-2 rounded-[3px] text-[15px] font-semibold shadow-none">
+        <button className="navbar-logout-btn">
           Logout <LogOut size={16} />
         </button>
       </div>

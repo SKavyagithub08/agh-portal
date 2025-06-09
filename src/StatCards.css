@@ -1,0 +1,123 @@
+.statcards-root {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  /* margin-top: 16px; 
+  margin-bottom: 36px; */
+  overflow-x: hidden;
+}
+
+.statcards-list {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.5px;
+  margin-bottom: 15px;
+  gap: 50px; /* Increase gap between cards */
+  padding: 0;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .statcards-list {
+    flex-direction: column;
+    gap: 18px;
+    padding-left: 8px;
+    padding-right: 8px;
+    align-items: center;
+  }
+}
+
+.statcard {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px 0 rgba(16,24,40,0.10);
+  border: 1px solid #e5e7eb;
+  padding: 22px 20px 18px 20px;
+
+  width: 240px;
+  max-width: 250px;
+  min-width: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  transition: box-shadow 0.2s;
+}
+
+@media (max-width: 900px) {
+  .statcard {
+    width: 95vw;
+    max-width: 340px;
+    min-width: 220px;
+    padding: 16px 12px;
+  }
+}
+
+.statcard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.statcard-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.statcard-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 1px solid #d1d5db;
+}
+
+.statcard-header-info {
+  line-height: 1.1;
+}
+
+.statcard-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.statcard-dept {
+  font-size: 13px;
+  color: #889;
+  font-weight: 400;
+  margin: 0;
+}
+
+.statcard-stats {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 4px;
+  gap: 18px;
+}
+
+.statcard-label {
+  color: #ff3e3e;
+  font-weight: 600;
+  margin-bottom: 0;
+  letter-spacing: 0.01em;
+  font-size: 13px;
+}
+
+.statcard-value {
+  color: #1a1a1a;
+  font-weight: 500;
+  margin-top: 0;
+  font-size: 13px;
+}
+
+/* Add a little more vertical spacing below the cards if needed */
+.statcards-root + * {
+  margin-top: 20px;
+}

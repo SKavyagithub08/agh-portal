@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTrophy } from "react-icons/fa";
+import "../StatCards.css";
 
 const trophyColors = ["#FFD700", "#C0C0C0", "#CD7F32"];
 
@@ -34,46 +35,51 @@ const topStudents = [
 ];
 
 const StatCards = () => (
-  <div className="flex justify-center">
-    <div className="flex flex-col gap-3.5 md:flex-row md:gap-6 px-2 md:px-6">
+  <div className="statcards-root">
+    <div className="statcards-list">
       {topStudents.map((student, index) => (
-        <div
-          key={index}
-          className="bg-white rounded-xl shadow-md p-4 md:p-5 w-full md:w-[320px] flex flex-col justify-between"
-        >
-         
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-3">
+        <div key={index} className="statcard">
+          <div className="statcard-header">
+            <div className="statcard-header-left">
               <img
                 src={student.avatar}
                 alt="avatar"
-                className="w-8.5 h-8.5 rounded-full object-cover border border-gray-300"
+                className="statcard-avatar"
+                style={{
+                  boxShadow: "0 2px 8px 0 rgba(16,24,40,0.10)",
+                  background: "#fff",
+                  marginRight: 8,
+                }}
               />
-              <div className="leading-tight">
-                <p className="text-[12.5px] font-bold text-[#1a1a1a]">
-                  {student.name}
-                </p>
-                <p className="text-sm text-[#889] font-small">
+              <div className="statcard-header-info">
+                <p className="statcard-name">{student.name}</p>
+                <p className="statcard-dept">
                   {student.dept} | {student.year}
                 </p>
               </div>
             </div>
-            <FaTrophy color={trophyColors[index]} size={40} />
+            <FaTrophy
+              color={trophyColors[index]}
+              size={44}
+              style={{
+                marginLeft: 8,
+                background: "transparent",
+                borderRadius: "50%",
+              }}
+            />
           </div>
-
-          
-          <div className="flex justify-between text-center text-[12.5px] mt-1 gap-x-2.5">
+          <div className="statcard-stats">
             <div>
-              <p className="text-[#ff3e3e] font-semibold">Active Days</p>
-              <p className="text-[#1a1a1a] font-medium">{student.days}</p>
+              <p className="statcard-label">Active Days</p>
+              <p className="statcard-value">{student.days}</p>
             </div>
             <div>
-              <p className="text-[#ff3e3e] font-semibold">Average Score</p>
-              <p className="text-[#1a1a1a] font-medium">{student.score}</p>
+              <p className="statcard-label">Average Score</p>
+              <p className="statcard-value">{student.score}</p>
             </div>
             <div>
-              <p className="text-[#ff3e3e] font-semibold">Course Completion</p>
-              <p className="text-[#1a1a1a] font-medium">{student.completion}</p>
+              <p className="statcard-label">Course Completion</p>
+              <p className="statcard-value">{student.completion}</p>
             </div>
           </div>
         </div>

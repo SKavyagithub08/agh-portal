@@ -5,16 +5,17 @@ import './App.css'
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import LeaderboardPage from "./components/LeaderboardPage";
+import "./Layout.css";
 
 export default function App() {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="layout-root">
       <Navbar />
-      <div className="flex flex-1 overflow-hidden">
-        <div className="hidden md:block">
+      <div className="layout-main">
+        <div className="layout-sidebar">
           <Sidebar />
         </div>
-        <main className="flex-1 overflow-y-auto bg-[#f5f5f5]">
+        <main className="layout-content">
           <LeaderboardPage />
         </main>
       </div>
