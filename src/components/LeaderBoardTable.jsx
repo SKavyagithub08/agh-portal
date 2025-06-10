@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Search, SlidersHorizontal, ChevronLeft, ChevronRight } from "lucide-react";
-import Sidebar from "./Sidebar"; // import Sidebar
+import Sidebar from "./Sidebar";
 import "../LeaderBoardTable.css";
 
 const leaderboardData = [
@@ -17,7 +17,8 @@ const LeaderBoardTable = () => {
 
   return (
     <div className="lbt-root">
-      <Sidebar mobileOpen={showFilter} onMobileClose={() => setShowFilter(false)} />
+      {/* Only render Sidebar for mobile filter modal */}
+      {showFilter && <Sidebar mobileOpen={showFilter} onMobileClose={() => setShowFilter(false)} />}
       <div className="lbt-container">
         {/* Controls Row: Only one set of controls visible at a time */}
         <div className="lbt-controls-combo">
@@ -80,11 +81,10 @@ const LeaderBoardTable = () => {
                 ([rank, name, dept, year, comp, score, email], idx) => (
                   <tr
                     key={rank}
-                    className={`lbt-table-row ${
-                      idx !== leaderboardData.length - 1
-                        ? "lbt-table-row-border"
-                        : ""
-                    }`}
+                    className={`lbt-table-row ${idx !== leaderboardData.length - 1
+                      ? "lbt-table-row-border"
+                      : ""
+                      }`}
                   >
                     <td className="lbt-table-td">{rank}</td>
                     <td className="lbt-table-td">{name}</td>
