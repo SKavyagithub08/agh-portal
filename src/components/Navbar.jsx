@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <nav
       className="navbar"
-      style={{ fontFamily: "Poppins, sans-serif", minHeight: 64 }}
+      style={{ fontFamily: "Poppins, sans-serif", minHeight: 48 }} // was 64
     >
       {/* Left: Hamburger (mobile) + Logo */}
       <div className="navbar-left">

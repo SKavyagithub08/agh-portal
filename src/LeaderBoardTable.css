@@ -22,8 +22,10 @@
   padding: 28px 36px 18px 36px;
   margin-top: 0; /* Remove extra margin above table */
   margin-bottom: 0;
-  max-width: 1100px;
+  max-width: 380px; /* Match stat card width */
   width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   box-sizing: border-box;
 }
 
@@ -31,6 +33,7 @@
   .lbt-container {
     padding: 8px 8px 8px 8px;
     padding-top: 28px;
+    padding-bottom: 18px; /* Add more bottom padding for separation */
   }
 }
 
@@ -59,10 +62,10 @@
 }
 
 .lbt-mobile-search-input {
-  width: 100%;
+  width: 120%;
   height: 35px;
   padding-left: 32px;
-  padding-right: 8px;
+  padding-right: 25px;
   font-size: 13px;
   font-weight: 400;
   background: #f5f5f5;
@@ -88,7 +91,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 20px;
+  margin-left: 70px;
   border: none;
   cursor: pointer;
 }
@@ -101,8 +104,8 @@
   background: #fff;
   border-radius: 8px;
   padding: 8px;
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-left: 3px;
+  margin-right: 2px;
   border: none;
   cursor: pointer;
 }
@@ -121,18 +124,19 @@
 }
 
 .lbt-mobile-check-btn {
-  width: 100%;
-  padding: 0 28px;
-  height: 44px;
+  width: 90%;         /* was 0% -- set to 90% for visibility */
+  padding: 0 18px;    /* slightly reduced */
+  height: 40px;       /* slightly reduced */
   background: #ff2847;
   color: #fff;
-  font-size: 17px;
+  font-size: 16px;    /* slightly reduced */
   border-radius: 7px;
   box-shadow: none;
   border: none;
   font-weight: 600;
   transition: background 0.2s;
   cursor: pointer;
+  margin: 0 auto;     /* center the button */
 }
 
 .lbt-mobile-check-btn:hover {
@@ -173,17 +177,17 @@
 .lbt-desktop-search-wrapper {
   position: relative;
   flex: 1;
-  max-width: 420px;
+  max-width: 400px;
 }
 
 .lbt-desktop-search-input {
-  width: 100%;
-  height: 44px;
+  width: 60%;
+  height: 40px;
   padding-left: 46px;
   padding-right: 16px;
   font-size: 15px;
   font-weight: 400;
-  background: #f8f9fa;
+  background: #f1f3f4;
   border-radius: 9999px;
   border: none;
   outline: none;
@@ -200,18 +204,18 @@
 }
 
 .lbt-desktop-check-btn {
-  width: 210px;
+  width: 197px;
   min-width: 180px;
   max-width: none;
   padding: 0 28px;
-  height: 44px;
+  height: 37px;
   background: #ff2847;
   color: #fff;
   font-size: 17px;
   border-radius: 7px;
   box-shadow: none;
   border: none;
-  font-weight: 600;
+  font-weight: 300;
   transition: background 0.2s;
   display: flex;
   align-items: center;
@@ -226,6 +230,12 @@
 
 .lbt-table-wrapper {
   overflow-x: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 380px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .lbt-table {
@@ -233,34 +243,73 @@
   min-width: 500px;
   border-collapse: separate;
   border-spacing: 0;
-  text-align: left;
-  font-size: 14px;
+  border-radius: 16px;
+  font-size: 15px;
+  max-width: 380px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  
+  /* Remove any border from the table itself */
+  border: none;
+  /* ...existing code... */
 }
 
 .lbt-table-head {
-  background: #f8f9fa;
-  color: #636363;
-  font-size: 13.5px;
-  font-weight: 600;
+  background: #ecebeb;
+  /* Remove border from thead */
+  border: none;
+  color: #595a5d;
 }
 
 .lbt-table-th {
   padding: 16px 24px;
+  border-radius: 0 !important;
+  background: #ecebeb;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  /* Remove right border for all except last */
+  border-right: none;
+  /* ...existing code... */
 }
 
 .lbt-table-th-left {
-  border-top-left-radius: 16px;
-  border-bottom-left-radius: 16px;
+  border-top-left-radius: 32px !important;
+  border-bottom-left-radius: 32px !important;
 }
 
-.lbt-table-th-right {
-  border-top-right-radius: 16px;
-  border-bottom-right-radius: 16px;
+.lbt-table-th-right,
+.lbt-table-th:last-child {
+  border-top-right-radius: 32px !important;
+  border-bottom-right-radius: 32px !important;
+}
+
+/* Remove double-radius in the middle (for desktop) */
+.lbt-table-th:not(:first-child):not(:last-child) {
+  border-radius: 0 !important;
+}
+
+/* On mobile, only the 3rd column gets right radius */
+@media (max-width: 500px) {
+  .lbt-table-th {
+    border-radius: 0 !important;
+    padding: 12px 6px;
+    font-size: 14px;
+  }
+  .lbt-table-th-left {
+    border-top-left-radius: 16px !important;
+    border-bottom-left-radius: 16px !important;
+  }
+  .lbt-table-th:nth-child(3) {
+    border-top-right-radius: 16px !important;
+    border-bottom-right-radius: 16px !important;
+  }
 }
 
 .lbt-table-row {
   color: #444;
   font-size: 13.5px;
+  height: 55px;
 }
 
 .lbt-table-row-border {
@@ -438,3 +487,184 @@
   cursor: pointer;
 }
 
+/* Enable borders for each cell */
+.lbt-table th,
+.lbt-table td {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.lbt-table th:last-child,
+.lbt-table td:last-child {
+  border-right: none;
+}
+
+.lbt-table thead tr {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.lbt-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 500px) {
+  .lbt-container,
+  .lbt-table-wrapper,
+  .lbt-table {
+    max-width: 100vw;
+    width: 100vw;
+    border-radius: 16px;
+  }
+}
+
+/* ...existing code... */
+
+.lbt-container {
+  /* ...existing code... */
+  max-width: 380px; /* Match stat card width */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  /* ...existing code... */
+}
+
+.lbt-table-wrapper {
+  /* ...existing code... */
+  max-width: 380px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  /* ...existing code... */
+}
+
+.lbt-table {
+  /* ...existing code... */
+  max-width: 380px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  /* ...existing code... */
+}
+
+@media (max-width: 500px) {
+  .lbt-container,
+  .lbt-table-wrapper,
+  .lbt-table {
+    max-width: 100vw;
+    width: 82vw;
+    border-radius: 16px;
+  }
+}
+
+/* Hide mobile controls on desktop */
+@media (min-width: 769px) {
+  .lbt-mobile-controls,
+  .lbt-controls-combo {
+    display: none !important;
+  }
+  .lbt-desktop-controls {
+    display: flex !important;
+  }
+}
+
+/* Combo controls row for mobile */
+.lbt-controls-combo {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .lbt-controls-combo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .lbt-mobile-search-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+  }
+  .lbt-mobile-search-wrapper {
+    flex: 1;
+  }
+  .lbt-mobile-check-btn {
+    width: 100%;
+    margin: 0;
+    margin-top: 8px;
+    font-size: 17px;
+    height: 44px;
+    border-radius: 8px;
+  }
+  .lbt-mobile-pagination-current {
+    font-size: 18px;
+    padding: 4px 16px;
+    margin-left: 8px;
+  }
+  /* Hide the old mobile controls */
+  .lbt-mobile-controls {
+    display: none !important;
+  }
+  /* Show desktop controls as a row below combo controls, but styled for mobile */
+  .lbt-desktop-controls.lbt-desktop-controls-mobile {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    margin-top: 0;
+    width: 100%;
+  }
+  .lbt-desktop-search-wrapper {
+    flex: 1;
+    max-width: none;
+  }
+  .lbt-desktop-search-input {
+    width: 100%;
+    font-size: 15px;
+    height: 44px;
+    border-radius: 8px;
+    padding-left: 36px;
+  }
+  .lbt-desktop-check-btn {
+    min-width: 0;
+    width: 48%;
+    font-size: 17px;
+    height: 44px;
+    border-radius: 8px;
+    margin-left: 8px;
+    padding: 0;
+  }
+}
+
+/* Hide desktop controls on mobile, show only mobile controls */
+@media (max-width: 768px) {
+  .lbt-desktop-controls,
+  .lbt-desktop-controls.lbt-desktop-controls-mobile {
+    display: none !important;
+  }
+  .lbt-controls-combo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .lbt-mobile-check-btn {
+    width: 100%;
+    margin: 0;
+    margin-top: 8px;
+    font-size: 17px;
+    height: 44px;
+    border-radius: 8px;
+  }
+}
+
+/* On desktop, hide mobile controls */
+@media (min-width: 769px) {
+  .lbt-controls-combo,
+  .lbt-mobile-controls {
+    display: none !important;
+  }
+  .lbt-desktop-controls {
+    display: flex !important;
+  }
+}

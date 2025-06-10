@@ -119,7 +119,7 @@
   font-weight: 400;
 }
 
-.sidebar-footer {
+/* .sidebar-footer {
   padding: 12px 18px 12px 18px;
   background: #fff;
   border-top: 1px solid #e5e7eb;
@@ -130,23 +130,153 @@
   z-index: 3;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-}
+} */
 
 .sidebar-clear-btn {
-  color: #2563eb;
+  color: #0251fc;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 510;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
   text-align: left;
+  margin-bottom: 30px;
+  margin-left: 25px;
 }
 
+/* Sidebar modal overlay for mobile */
+.sidebar-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0,0,0,0.18);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transition: background 0.2s;
+}
+
+/* Sidebar modal panel for mobile */
+.sidebar-modal-panel {
+  background: #fff;
+  width: 95vw;
+  max-width: 370px;
+  min-width: 0;
+  margin-top: 190px;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px 0 rgba(16,24,40,0.18);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: sidebar-slide-in 0.22s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+}
+
+@keyframes sidebar-slide-in {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Hide the normal sidebar on mobile */
 @media (max-width: 900px) {
-  .sidebar, .sidebar-footer {
-    width: 100vw;
-    min-width: 0;
-    max-width: none;
+  .sidebar {
+    display: none !important;
   }
+}
+
+/* Sidebar modal header */
+.sidebar-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 18px 0 18px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  background: #fff;
+}
+
+.sidebar-modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #888;
+  cursor: pointer;
+  margin-left: 8px;
+  margin-right: -6px;
+  line-height: 1;
+  padding: 0;
+}
+
+/* Adjust scroll area for modal */
+.sidebar-modal-panel .sidebar-scroll {
+  padding: 8px 18px 0 18px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}
+
+/* Footer for modal */
+.sidebar-modal-panel .sidebar-footer {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  z-index: 2;
+  box-shadow: 0 -1px 8px 0 rgba(16,24,40,0.04);
+}
+
+/* Button styles for modal footer */
+.sidebar-clear-btn {
+  color: #6366f1;
+  font-size: 15px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-show-btn {
+  background: #6366f1;
+  color: #fff;
+  padding: 8px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1px 3px 0 rgba(16,24,40,0.08);
+  transition: background 0.18s;
+  margin-right: 28px;
+  width: 45%;
+}
+
+.sidebar-show-btn:hover {
+  background: #4f46e5;
+}
+
+/* Checkbox and search input tweaks for modal */
+.sidebar-checkbox {
+  accent-color: #6366f1;
+}
+
+.sidebar-search-input {
+  width: 70%;
+  padding: 7px 12px 7px 34px;
+  font-size: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  outline: none;
+  background: #f8f9fa;
+  transition: border 0.2s;
 }

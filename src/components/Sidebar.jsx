@@ -1,8 +1,8 @@
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { useState } from "react";
 import "../Sidebar.css";
 
-export default function Sidebar() {
+export default function Sidebar({ mobileOpen, onMobileClose }) {
   const departments = [
     "CSE", "AI & DS", "IT", "CSE (AI & ML)", "ECE", "CSE (CC)", "Cyber Security", "CS BS"
   ];
@@ -27,9 +27,9 @@ export default function Sidebar() {
     setSelectedYears([]);
   };
 
-  return (
-    <aside className="sidebar">
-      {/* Scrollable content */}
+  // Sidebar content as a function for reuse
+  const sidebarContent = (
+    <>
       <div className="sidebar-scroll">
         {/* Filter Department */}
         <div className="sidebar-section">
@@ -92,16 +92,45 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-
-      {/* Fixed Clear All Button */}
       <div className="sidebar-footer">
-        <button
-          onClick={clearAll}
-          className="sidebar-clear-btn"
-        >
+        <button onClick={clearAll} className="sidebar-clear-btn">
           Clear All
         </button>
+        {/* Show Results button for mobile modal */}
+        {mobileOpen && (
+          <button className="sidebar-show-btn" onClick={onMobileClose}>
+            Show Results
+          </button>
+        )}
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Desktop sidebar */}
+      <aside className="sidebar">{sidebarContent}</aside>
+      {/* Mobile sidebar modal */}
+      {mobileOpen && (
+        <div className="sidebar-modal-overlay" onClick={onMobileClose}>
+          <div
+            className="sidebar-modal-panel"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="sidebar-modal-header">
+              Filters
+              <button
+                className="sidebar-modal-close-btn"
+                onClick={onMobileClose}
+                aria-label="Close"
+              >
+                <X size={26} />
+              </button>
+            </div>
+            {sidebarContent}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
