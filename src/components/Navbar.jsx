@@ -1,57 +1,62 @@
-import { ChevronDown, LogOut, Menu, X } from "lucide-react";
+import { ChevronDown, LogOut, Menu as MenuIcon, X } from "lucide-react";
 import { useState } from "react";
-import "../Navbar.css";
+import {
+  NavbarContainer,
+  NavbarLeft,
+  Hamburger,
+  Logo,
+  Menu,
+  MenuItem,
+  MenuItemDropdown,
+  Profile,
+  ProfileInfo,
+  Avatar,
+  ProfileName,
+  LogoutButton
+} from "../styles/Navbar.styles";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav
-      className="navbar"
-      style={{ fontFamily: "Poppins, sans-serif", minHeight: 48 }} // was 64
-    >
-      {/* Left: Hamburger (mobile) + Logo */}
-      <div className="navbar-left">
-        <button
-          className="navbar-hamburger"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X className="navbar-hamburger-icon" /> : <Menu className="navbar-hamburger-icon" />}
-        </button>
-        <img src="/logo.jpg" alt="Logo" className="navbar-logo" />
-      </div>
+    <NavbarContainer style={{ fontFamily: "Poppins, sans-serif", minHeight: 48 }}>
+      {/* Left: Hamburger + Logo */}
+      <NavbarLeft>
+        <Hamburger onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? (
+            <X size={24} />
+          ) : (
+            <MenuIcon size={24} />
+          )}
+        </Hamburger>
+        <Logo src="/logo.jpg" alt="Logo" />
+      </NavbarLeft>
 
-      {/* Menu (hidden on mobile) */}
-      <div className="navbar-menu">
-        <span className="navbar-menu-item">Home</span>
-        <span className="navbar-menu-item">Practice</span>
-        <div className="navbar-menu-item-dropdown">
+      {/* Middle Menu (visible on desktop) */}
+      <Menu>
+        <MenuItem>Home</MenuItem>
+        <MenuItem>Practice</MenuItem>
+        <MenuItemDropdown>
           <span>Assessment</span>
           <ChevronDown size={16} />
-        </div>
-        <span className="navbar-menu-item">Leaderboard</span>
-        <div className="navbar-menu-item-dropdown">
+        </MenuItemDropdown>
+        <MenuItem>Leaderboard</MenuItem>
+        <MenuItemDropdown>
           <span>CompanySpecific</span>
           <ChevronDown size={16} />
-        </div>
-      </div>
+        </MenuItemDropdown>
+      </Menu>
 
-      {/* Profile + Logout (hidden on mobile) */}
-      <div className="navbar-profile">
-        <div className="navbar-profile-info">
-          <img
-            src="https://i.pravatar.cc/40?img=12"
-            alt="Profile"
-            className="navbar-profile-avatar"
-          />
-          <span className="navbar-profile-name">
-            Muskan Verma
-          </span>
-        </div>
-        <button className="navbar-logout-btn">
+      {/* Right Profile */}
+      <Profile>
+        <ProfileInfo>
+          <Avatar src="https://i.pravatar.cc/40?img=12" alt="Profile" />
+          <ProfileName>Muskan Verma</ProfileName>
+        </ProfileInfo>
+        <LogoutButton>
           Logout <LogOut size={16} />
-        </button>
-      </div>
-    </nav>
+        </LogoutButton>
+      </Profile>
+    </NavbarContainer>
   );
 }

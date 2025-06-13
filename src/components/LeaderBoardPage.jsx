@@ -1,15 +1,17 @@
 import StatCards from "./StatCards";
 import LeaderBoardTable from "./LeaderBoardTable";
+import {
+  LeaderboardPageWrapper,
+  MainArea
+} from "../styles/LeaderboardPage.styles";
 
 export default function LeaderboardPage() {
   return (
-    <div className="leaderboardpage-root">
-      <div className="leaderboardpage-container">
+    <LeaderboardPageWrapper>
+      <MainArea>
         <StatCards />
         <LeaderBoardTable />
-      </div>
-    </div>
+      </MainArea>
+    </LeaderboardPageWrapper>
   );
 }
-
-

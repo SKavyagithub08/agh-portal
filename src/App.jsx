@@ -1,22 +1,27 @@
-import './App.css'
+// App.jsx
+import React from "react";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import LeaderboardPage from "./components/LeaderboardPage";
-import "./Layout.css";
+import {
+  LayoutRoot,
+  LayoutMain,
+  LayoutSidebar,
+  LayoutContent
+} from "./styles/Layout.styles"; // ✅ Importing styled-components from layout styles
 
 export default function App() {
   return (
-    <div className="layout-root">
+    <LayoutRoot>
       <Navbar />
-      <div className="layout-main">
-        <div className="layout-sidebar">
+      <LayoutMain>
+        <LayoutSidebar>
           <Sidebar />
-        </div>
-        <main className="layout-content">
+        </LayoutSidebar>
+        <LayoutContent>
           <LeaderboardPage />
-        </main>
-      </div>
-    </div>
+        </LayoutContent>
+      </LayoutMain>
+    </LayoutRoot>
   );
 }
-

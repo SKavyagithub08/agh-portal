@@ -1,7 +1,21 @@
 import React, { useState } from "react";
 import { Search, SlidersHorizontal, ChevronLeft, ChevronRight } from "lucide-react";
-import Sidebar from "./Sidebar";
-import "../LeaderBoardTable.css";
+import Sidebar from "./Sidebar"; 
+import {
+  LbtRoot,
+  LbtContainer,
+  LbtTableWrapper,
+  LbtTable,
+  LbtTableHead,
+  LbtTableTH,
+  LbtTableTD,
+  LbtTableRow,
+  LbtMobileControls,
+  LbtDesktopControls,
+  LbtSearchWrapper,
+  LbtSearchInput,
+  LbtCheckBtn
+} from "../styles/LeaderBoardTable.styles";
 
 const leaderboardData = [
   ["04", "Luca Romano", "CSE", "2025", "80%", "80/100", "luca@gmail.com"],
@@ -16,91 +30,103 @@ const LeaderBoardTable = () => {
   const [showFilter, setShowFilter] = useState(false);
 
   return (
-    <div className="lbt-root">
-      {/* Only render Sidebar for mobile filter modal */}
-      {showFilter && <Sidebar mobileOpen={showFilter} onMobileClose={() => setShowFilter(false)} />}
-      <div className="lbt-container">
-        {/* Controls Row: Only one set of controls visible at a time */}
-        <div className="lbt-controls-combo">
-          <div className="lbt-mobile-search-row">
-            <div className="lbt-mobile-search-wrapper">
-              <input
-                type="text"
-                placeholder="Search"
-                className="lbt-mobile-search-input"
-              />
-              <span className="lbt-mobile-search-icon">
+    <LbtRoot>
+      {showFilter && (
+        <Sidebar mobileOpen={showFilter} onMobileClose={() => setShowFilter(false)} />
+      )}
+      <LbtContainer>
+        {/* Mobile Controls */}
+        <LbtMobileControls>
+          <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+            <div style={{ position: "relative", flex: 1 }}>
+              <LbtSearchInput placeholder="Search" />
+              <span
+                style={{
+                  position: "absolute",
+                  left: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  color: "#bdbdbd"
+                }}
+              >
                 <Search size={18} />
               </span>
             </div>
             <button
-              className="lbt-mobile-filter-btn"
+              style={{
+                background: "#f5f5f5",
+                borderRadius: "9999px",
+                padding: "8px",
+                border: "none",
+                cursor: "pointer"
+              }}
               onClick={() => setShowFilter(true)}
             >
-              <SlidersHorizontal size={22} className="lbt-mobile-filter-icon" />
+              <SlidersHorizontal size={22} />
             </button>
-            <button className="lbt-mobile-pagination-btn">
-              <ChevronLeft size={20} className="lbt-mobile-pagination-icon" />
+            <button style={{ marginLeft: "4px" }}>
+              <ChevronLeft size={20} />
             </button>
-            <span className="lbt-mobile-pagination-current">1</span>
-            <button className="lbt-mobile-pagination-btn">
-              <ChevronRight size={20} className="lbt-mobile-pagination-icon" />
+            <span style={{ padding: "4px 16px", borderRadius: "8px", fontWeight: 500 }}>
+              1
+            </span>
+            <button style={{ marginLeft: "2px" }}>
+              <ChevronRight size={20} />
             </button>
           </div>
-          <button className="lbt-mobile-check-btn">Check My Position</button>
-        </div>
-        <div className="lbt-desktop-controls">
-          <div className="lbt-desktop-search-wrapper">
-            <input
-              type="text"
-              placeholder="Search here..."
-              className="lbt-desktop-search-input"
-            />
-            <span className="lbt-desktop-search-icon">
+          <LbtCheckBtn>Check My Position</LbtCheckBtn>
+        </LbtMobileControls>
+
+        {/* Desktop Controls */}
+        <LbtDesktopControls>
+          <LbtSearchWrapper>
+            <LbtSearchInput placeholder="Search here..." />
+            <span
+              style={{
+                position: "absolute",
+                left: "20px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                color: "#bdbdbd"
+              }}
+            >
               <Search size={15} />
             </span>
-          </div>
-          <button className="lbt-desktop-check-btn">Check My Position</button>
-        </div>
+          </LbtSearchWrapper>
+          <LbtCheckBtn>Check My Position</LbtCheckBtn>
+        </LbtDesktopControls>
+
         {/* Table */}
-        <div className="lbt-table-wrapper">
-          <table className="lbt-table">
-            <thead className="lbt-table-head">
+        <LbtTableWrapper>
+          <LbtTable>
+            <LbtTableHead>
               <tr>
-                <th className="lbt-table-th lbt-table-th-left">Rank</th>
-                <th className="lbt-table-th">Student Name</th>
-                <th className="lbt-table-th lbt-table-th-right">Department</th>
-                <th className="lbt-table-th hide-mobile">Year</th>
-                <th className="lbt-table-th hide-mobile">Course Completion %</th>
-                <th className="lbt-table-th hide-mobile">Average Score</th>
-                <th className="lbt-table-th hide-mobile">Email</th>
+                <LbtTableTH style={{ borderTopLeftRadius: "32px" }}>Rank</LbtTableTH>
+                <LbtTableTH>Student Name</LbtTableTH>
+                <LbtTableTH style={{ borderTopRightRadius: "32px" }}>Department</LbtTableTH>
+                <LbtTableTH>Year</LbtTableTH>
+                <LbtTableTH>Course Completion %</LbtTableTH>
+                <LbtTableTH>Average Score</LbtTableTH>
+                <LbtTableTH>Email</LbtTableTH>
               </tr>
-            </thead>
+            </LbtTableHead>
             <tbody>
-              {leaderboardData.map(
-                ([rank, name, dept, year, comp, score, email], idx) => (
-                  <tr
-                    key={rank}
-                    className={`lbt-table-row ${idx !== leaderboardData.length - 1
-                      ? "lbt-table-row-border"
-                      : ""
-                      }`}
-                  >
-                    <td className="lbt-table-td">{rank}</td>
-                    <td className="lbt-table-td">{name}</td>
-                    <td className="lbt-table-td">{dept}</td>
-                    <td className="lbt-table-td hide-mobile">{year}</td>
-                    <td className="lbt-table-td hide-mobile">{comp}</td>
-                    <td className="lbt-table-td hide-mobile">{score}</td>
-                    <td className="lbt-table-td hide-mobile">{email}</td>
-                  </tr>
-                )
-              )}
+              {leaderboardData.map(([rank, name, dept, year, comp, score, email], idx) => (
+                <LbtTableRow key={rank}>
+                  <LbtTableTD>{rank}</LbtTableTD>
+                  <LbtTableTD>{name}</LbtTableTD>
+                  <LbtTableTD>{dept}</LbtTableTD>
+                  <LbtTableTD>{year}</LbtTableTD>
+                  <LbtTableTD>{comp}</LbtTableTD>
+                  <LbtTableTD>{score}</LbtTableTD>
+                  <LbtTableTD>{email}</LbtTableTD>
+                </LbtTableRow>
+              ))}
             </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+          </LbtTable>
+        </LbtTableWrapper>
+      </LbtContainer>
+    </LbtRoot>
   );
 };
 

@@ -1,57 +1,53 @@
-.navbar {
+import styled from 'styled-components';
+
+export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 32px;
-  box-shadow: 0 1px 2px 0 rgba(16,24,40,0.05);
+  box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
   border-bottom: 1px solid #e5e7eb;
   background: #fff;
   min-height: 60px;
   height: 55px;
-}
 
-@media (max-width: 768px) {
-  .navbar {
+  @media (max-width: 768px) {
     padding-left: 16px;
     padding-right: 16px;
   }
-}
+`;
 
-.navbar-left {
+export const NavbarLeft = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
   flex: 1;
-}
+`;
 
-.navbar-hamburger {
+export const Hamburger = styled.button`
   background: none;
   border: none;
   display: block;
   cursor: pointer;
-}
 
-@media (min-width: 768px) {
-  .navbar-hamburger {
+  @media (min-width: 768px) {
     display: none;
   }
-}
+`;
 
-.navbar-hamburger-icon {
+export const HamburgerIcon = styled.img`
   width: 24px;
   height: 24px;
-}
+`;
 
-.navbar-logo {
+export const Logo = styled.img`
   height: 40px;
-}
+`;
 
-.navbar-menu {
+export const Menu = styled.div`
   display: none;
-}
 
-@media (min-width: 768px) {
-  .navbar-menu {
+  @media (min-width: 768px) {
     display: flex;
     align-items: center;
     gap: 28px;
@@ -61,61 +57,56 @@
     flex: 1;
     justify-content: center;
   }
-}
+`;
 
-.navbar-menu-item {
+export const MenuItem = styled.div`
   cursor: pointer;
   transition: color 0.2s;
-}
 
-.navbar-menu-item:hover,
-.navbar-menu-item-dropdown:hover {
-  color: #ff3e3e;
-}
+  &:hover {
+    color: #ff3e3e;
+  }
+`;
 
-.navbar-menu-item-dropdown {
+export const MenuItemDropdown = styled(MenuItem)`
   display: flex;
   align-items: center;
   gap: 4px;
-  cursor: pointer;
-  transition: color 0.2s;
-}
+`;
 
-.navbar-profile {
+export const Profile = styled.div`
   display: none;
-}
 
-@media (min-width: 768px) {
-  .navbar-profile {
+  @media (min-width: 768px) {
     display: flex;
     align-items: center;
     gap: 16px;
     flex: 1;
     justify-content: flex-end;
   }
-}
+`;
 
-.navbar-profile-info {
+export const ProfileInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-}
+`;
 
-.navbar-profile-avatar {
+export const Avatar = styled.img`
   height: 40px;
   width: 40px;
   border-radius: 9999px;
   border: 1px solid #e5e5e5;
   object-fit: cover;
-}
+`;
 
-.navbar-profile-name {
+export const ProfileName = styled.div`
   font-weight: 600;
   color: #222;
   font-size: 15px;
-}
+`;
 
-.navbar-logout-btn {
+export const LogoutButton = styled.button`
   display: flex;
   align-items: center;
   gap: 4px;
@@ -129,8 +120,8 @@
   box-shadow: none;
   cursor: pointer;
   transition: background 0.2s;
-}
 
-.navbar-logout-btn:hover {
-  background: #e11d48;
-}
+  &:hover {
+    background: #e11d48;
+  }
+`;

@@ -1,6 +1,21 @@
+// src/components/StatCards.jsx
 import React from "react";
 import { FaTrophy } from "react-icons/fa";
-import "../StatCards.css";
+import {
+  StatCardsRoot,
+  StatCardsList,
+  StatCard,
+  StatCardHeader,
+  StatCardHeaderLeft,
+  StatCardAvatar,
+  StatCardHeaderInfo,
+  StatCardName,
+  StatCardDept,
+  StatCardStats,
+  StatCardStat,
+  StatCardLabel,
+  StatCardValue
+} from "../styles/StatCards.styles";
 
 const trophyColors = ["#FFD700", "#C0C0C0", "#CD7F32"];
 
@@ -35,57 +50,44 @@ const topStudents = [
 ];
 
 const StatCards = () => (
-  <div className="statcards-root">
-    <div className="statcards-list">
+  <StatCardsRoot>
+    <StatCardsList>
       {topStudents.map((student, index) => (
-        <div key={index} className="statcard">
-          <div className="statcard-header">
-            <div className="statcard-header-left">
-              <img
-                src={student.avatar}
-                alt="avatar"
-                className="statcard-avatar"
-                style={{
-                  boxShadow: "0 2px 8px 0 rgba(16,24,40,0.10)",
-                  background: "#fff",
-                  marginRight: 8,
-                }}
-              />
-              <div className="statcard-header-info">
-                <p className="statcard-name">{student.name}</p>
-                <p className="statcard-dept">
+        <StatCard key={index}>
+          <StatCardHeader>
+            <StatCardHeaderLeft>
+              <StatCardAvatar src={student.avatar} alt="avatar" />
+              <StatCardHeaderInfo>
+                <StatCardName>{student.name}</StatCardName>
+                <StatCardDept>
                   {student.dept} | {student.year}
-                </p>
-              </div>
-            </div>
+                </StatCardDept>
+              </StatCardHeaderInfo>
+            </StatCardHeaderLeft>
             <FaTrophy
               color={trophyColors[index]}
               size={44}
-              style={{
-                marginLeft: 8,
-                background: "transparent",
-                borderRadius: "50%",
-              }}
+              style={{ marginLeft: 8 }}
             />
-          </div>
-          <div className="statcard-stats">
-            <div>
-              <p className="statcard-label">Active Days</p>
-              <p className="statcard-value">{student.days}</p>
-            </div>
-            <div>
-              <p className="statcard-label">Average Score</p>
-              <p className="statcard-value">{student.score}</p>
-            </div>
-            <div>
-              <p className="statcard-label">Course Completion</p>
-              <p className="statcard-value">{student.completion}</p>
-            </div>
-          </div>
-        </div>
+          </StatCardHeader>
+          <StatCardStats>
+            <StatCardStat>
+              <StatCardLabel>Active Days</StatCardLabel>
+              <StatCardValue>{student.days}</StatCardValue>
+            </StatCardStat>
+            <StatCardStat>
+              <StatCardLabel>Average Score</StatCardLabel>
+              <StatCardValue>{student.score}</StatCardValue>
+            </StatCardStat>
+            <StatCardStat>
+              <StatCardLabel>Course Completion</StatCardLabel>
+              <StatCardValue>{student.completion}</StatCardValue>
+            </StatCardStat>
+          </StatCardStats>
+        </StatCard>
       ))}
-    </div>
-  </div>
+    </StatCardsList>
+  </StatCardsRoot>
 );
 
 export default StatCards;
